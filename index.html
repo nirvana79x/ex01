@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>국민과 함께하는 열린 충북대학교 포털</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts: Pretendard or Noto Sans KR -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cbnu: {
+              // 충북대학교 공식 UI 규정 컬러 (CBNU-Red / Maroon & CBNU-Blue & CBNU-Gray)
+              red: '#B72654',         // 공식 주조색 (Pantone 7425C, RGB 183, 38, 84)
+              redDark: '#8A153A',     // 깊은 버건디/머룬
+              redLight: '#FDF2F4',    // 아주 연한 머룬 틴트
+              blue: '#0063AF',        // 공식 보조색 (Pantone 2935C, RGB 0, 99, 175)
+              blueDark: '#004A85',
+              gray: '#58595B',        // 공식 중립 보조색 (Pantone Cool Gray)
+              slateDark: '#1E242C',
+              lightBg: '#FAF9FB',
+              card: '#FFFFFF',
+              border: '#E8EAED'
+            }
+          },
+          fontFamily: {
+            sans: ['Pretendard', 'Noto Sans KR', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      scroll-behavior: smooth;
+    }
+    /* 충북대학교 시그니처 머룬-딥와인 헤더 그라데이션 */
+    .hero-cbnu-gradient {
+      background: linear-gradient(135deg, #4A0E1E 0%, #75142E 35%, #B72654 80%, #9B1840 100%);
+    }
+    .hero-sub-gradient {
+      background: linear-gradient(135deg, #1E242C 0%, #3B1B26 60%, #5C152A 100%);
+    }
+  </style>
+</head>
+<body class="bg-[#FAF9FB] text-slate-800 antialiased selection:bg-rose-100 selection:text-cbnu-redDark">
+
+  <!-- 상단 공공 알림 바 -->
+  <aside aria-label="충북대학교 공식 포털 안내" class="bg-cbnu-slateDark text-slate-300 text-xs py-2 px-4 border-b border-white/10">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-rose-400 animate-pulse"></span>
+        <span>국가 거점 국립대학교 | 국민과 도민을 위한 충북대학교 열린 정보 포털</span>
+      </div>
+      <div class="flex items-center gap-4 text-slate-400">
+        <span class="hover:text-white transition">충북 청주시 서원구 충대로 1</span>
+        <span>대표전화: 043-261-2114</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 메인 헤더 & 네비게이션 -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- 로고 영역 -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-cbnu-redDark to-cbnu-red flex items-center justify-center text-white shadow-md shadow-rose-900/20 group-hover:scale-105 transition-transform">
+          <i data-lucide="graduation-cap" class="w-7 h-7 text-rose-100"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-black text-xl tracking-tight text-cbnu-redDark">충북대학교</span>
+            <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-rose-50 text-cbnu-red border border-rose-200">열린 국민포털</span>
+          </div>
+          <p class="text-xs text-slate-500 font-medium">Chungbuk National University Portal</p>
+        </div>
+      </a>
+
+      <!-- 데스크톱 네비게이션 메뉴 -->
+      <nav class="hidden md:flex items-center gap-4 lg:gap-6 font-medium text-slate-700 text-sm whitespace-nowrap shrink-0">
+        <a href="#intro" class="hover:text-cbnu-red transition-colors flex items-center gap-1.5 py-2 shrink-0">
+          <i data-lucide="info" class="w-4 h-4 text-slate-400 shrink-0"></i><span class="whitespace-nowrap">대학소개</span>
+        </a>
+        <a href="#missions" class="hover:text-cbnu-red transition-colors flex items-center gap-1.5 py-2 shrink-0">
+          <i data-lucide="briefcase" class="w-4 h-4 text-slate-400 shrink-0"></i><span class="whitespace-nowrap">주요업무·역할</span>
+        </a>
+        <a href="#issues" class="hover:text-cbnu-red transition-colors flex items-center gap-1.5 py-2 shrink-0">
+          <i data-lucide="sparkles" class="w-4 h-4 text-cbnu-red shrink-0"></i><span class="whitespace-nowrap">최근 주요이슈</span>
+        </a>
+        <a href="#campuses" class="hover:text-cbnu-red transition-colors flex items-center gap-1.5 py-2 shrink-0">
+          <i data-lucide="map-pin" class="w-4 h-4 text-slate-400 shrink-0"></i><span class="whitespace-nowrap">캠퍼스 안내</span>
+        </a>
+        <a href="#citizen-services" class="hover:text-cbnu-red transition-colors flex items-center gap-1.5 py-2 shrink-0">
+          <i data-lucide="heart-handshake" class="w-4 h-4 text-cbnu-red shrink-0"></i><span class="whitespace-nowrap">국민개방서비스</span>
+        </a>
+        <a href="#faq" class="hover:text-cbnu-red transition-colors flex items-center gap-1.5 py-2 shrink-0">
+          <i data-lucide="help-circle" class="w-4 h-4 text-slate-400 shrink-0"></i><span class="whitespace-nowrap">자주 묻는 질문</span>
+        </a>
+      </nav>
+
+      <!-- 우측 빠른 액션 -->
+      <div class="hidden lg:flex items-center gap-3 shrink-0">
+        <button onclick="scrollToSection('contact')" class="px-3.5 py-2 rounded-xl bg-cbnu-red hover:bg-cbnu-redDark text-white text-sm font-bold shadow-sm hover:shadow-md transition flex items-center gap-1.5 whitespace-nowrap shrink-0">
+          <i data-lucide="phone-call" class="w-4 h-4 shrink-0"></i>
+          <span class="whitespace-nowrap">부서 전화번호부</span>
+        </button>
+      </div>
+
+      <!-- 모바일 메뉴 버튼 -->
+      <button id="mobileMenuBtn" aria-label="메뉴 열기" class="md:hidden p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- 모바일 드롭다운 메뉴 -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 py-4 space-y-3 shadow-lg">
+      <a href="#intro" class="block py-2 text-slate-700 font-medium hover:text-cbnu-red">대학소개</a>
+      <a href="#missions" class="block py-2 text-slate-700 font-medium hover:text-cbnu-red">주요업무·역할</a>
+      <a href="#issues" class="block py-2 text-slate-700 font-medium hover:text-cbnu-red">최근 주요이슈 (글로컬30 등)</a>
+      <a href="#campuses" class="block py-2 text-slate-700 font-medium hover:text-cbnu-red">캠퍼스 둘러보기</a>
+      <a href="#citizen-services" class="block py-2 text-slate-700 font-medium hover:text-cbnu-red">국민 개방 서비스</a>
+      <a href="#faq" class="block py-2 text-slate-700 font-medium hover:text-cbnu-red">자주 묻는 질문</a>
+      <a href="#contact" class="block py-2 text-cbnu-red font-semibold">주요 부서 연락처 안내</a>
+    </div>
+  </header>
+
+  <!-- 히어로 섹션 (Hero Section) - CBNU 메인 머룬 테마 적용 -->
+  <section class="hero-cbnu-gradient text-white relative overflow-hidden py-20 lg:py-28">
+    <!-- 배경 은은한 패턴 & 빛 효과 -->
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
+    <div class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-rose-400/20 blur-3xl pointer-events-none"></div>
+    <div class="absolute -left-20 top-10 w-80 h-80 rounded-full bg-rose-300/15 blur-2xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-rose-100 text-sm font-semibold mb-6">
+          <i data-lucide="award" class="w-4 h-4 text-amber-300"></i>
+          <span>대한민국 중부권의 중심 & 국가 거점 국립대학교</span>
+        </div>
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-white mb-6">
+          진리와 정의, 개척의 정신으로<br>
+          <span class="text-rose-200 underline decoration-rose-300 decoration-wavy decoration-2">국민과 지역의 내일</span>을 밝힙니다
+        </h1>
+        <p class="text-base sm:text-lg text-rose-50 leading-relaxed font-normal mb-8 max-w-2xl">
+          충북대학교는 1951년 도민들의 소중한 뜻을 모아 설립된 이래, 대한민국 첨단 바이오·반도체·이차전지 산업을 이끌고 우수한 미래 세대를 길러내는 국가 거점 국립대학교입니다. 국민 여러분께 충북대의 발걸음과 따뜻한 소식을 투명하게 전해드립니다.
+        </p>
+
+        <!-- 핵심 요약 배너 버튼들 -->
+        <div class="flex flex-wrap items-center gap-4">
+          <a href="#issues" class="px-6 py-3.5 rounded-xl bg-white text-cbnu-redDark hover:bg-rose-50 font-bold text-sm sm:text-base shadow-lg transition transform hover:-translate-y-0.5 flex items-center gap-2">
+            <i data-lucide="flame" class="w-5 h-5 text-cbnu-red"></i>
+            <span>최근 핫이슈 바로보기</span>
+          </a>
+          <a href="#citizen-services" class="px-6 py-3.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/30 text-white font-bold text-sm sm:text-base backdrop-blur-sm transition flex items-center gap-2">
+            <i data-lucide="smile" class="w-5 h-5 text-rose-200"></i>
+            <span>시민 이용 편의시설</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 하단 통계 지표 카드 -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-10 border-t border-white/15">
+        <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/10">
+          <div class="text-2xl sm:text-3xl font-extrabold text-white">1951년</div>
+          <div class="text-xs sm:text-sm text-rose-100 mt-1">개교 및 역사 (도민의 쌀 한 되)</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/10">
+          <div class="text-2xl sm:text-3xl font-extrabold text-amber-300">15개</div>
+          <div class="text-xs sm:text-sm text-rose-100 mt-1">단과대학 & 전문·특수대학원</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/10">
+          <div class="text-2xl sm:text-3xl font-extrabold text-white">BBCM</div>
+          <div class="text-xs sm:text-sm text-rose-100 mt-1">바이오·이차전지·반도체·모빌리티</div>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/10">
+          <div class="text-2xl sm:text-3xl font-extrabold text-rose-200">3개 캠퍼스</div>
+          <div class="text-xs sm:text-sm text-rose-100 mt-1">개신(청주) · 오송 · 오창</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 포털 실시간 공지/이슈 알림 티커 -->
+  <aside aria-label="실시간 충북대 브리핑" class="bg-rose-50/70 border-y border-rose-100 py-3 px-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-between text-sm">
+      <div class="flex items-center gap-3 overflow-hidden">
+        <span class="bg-cbnu-red text-white text-xs px-2.5 py-1 rounded font-bold shrink-0 flex items-center gap-1 shadow-xs">
+          <i data-lucide="megaphone" class="w-3.5 h-3.5"></i> 브리핑
+        </span>
+        <div class="text-slate-700 truncate font-medium">
+          <span class="text-cbnu-redDark font-bold">[글로컬대학30 혁신 보고]</span> 국립한국교통대와의 통합 추진 현황 및 충북 전략산업 BBCM 인재 양성 로드맵을 알기 쉽게 소개합니다.
+        </div>
+      </div>
+      <a href="#issues" class="text-cbnu-red hover:underline text-xs sm:text-sm font-bold shrink-0 ml-3 flex items-center">
+        자세히 <i data-lucide="chevron-right" class="w-4 h-4 ml-0.5"></i>
+      </a>
+    </div>
+  </aside>
+
+  <!-- 1. 대학 개요 및 건학 이념 소개 (Intro) -->
+  <section id="intro" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-cbnu-red font-bold text-sm tracking-widest uppercase">About Chungbuk National University</span>
+        <h2 class="text-3xl font-extrabold text-slate-900 mt-2 mb-4">대한민국의 중심에서 세계로 도약하는 국립대</h2>
+        <p class="text-slate-600 leading-relaxed">
+          충북대학교는 1951년 도민들의 소중한 성금과 정성으로 태어난 대학입니다.
+          그렇기에 충북대의 모든 성과는 지역 주민과 국민 모두의 자산입니다.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- 가치 1 -->
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-7 hover:shadow-lg hover:border-cbnu-red/30 transition-all duration-300 group">
+          <div class="w-14 h-14 rounded-xl bg-rose-100 text-cbnu-red flex items-center justify-center mb-6 group-hover:bg-cbnu-red group-hover:text-white transition-colors">
+            <i data-lucide="compass" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">교훈: 진리·정의·개척</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            새로운 지식을 깊이 탐구(진리)하고, 바른 도덕과 윤리를 지키며(정의), 변화하는 미래를 주도적으로 열어가는(개척) 참된 인재를 길러냅니다.
+          </p>
+          <div class="text-xs text-cbnu-red font-semibold flex items-center gap-1">
+            <span>개신(開新)정신 계승</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </div>
+        </div>
+
+        <!-- 가치 2 -->
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-7 hover:shadow-lg hover:border-cbnu-blue/30 transition-all duration-300 group">
+          <div class="w-14 h-14 rounded-xl bg-blue-100 text-cbnu-blue flex items-center justify-center mb-6 group-hover:bg-cbnu-blue group-hover:text-white transition-colors">
+            <i data-lucide="cpu" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">BBCM 첨단 융복합 특성화</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            충청북도의 전략 성장 엔진인 <strong>Bio(바이오), Battery(이차전지), Chip(반도체), Mobility(모빌리티)</strong>를 선도하는 특성화 교육 및 R&D 생태계를 조성합니다.
+          </p>
+          <div class="text-xs text-cbnu-blue font-semibold flex items-center gap-1">
+            <span>첨단 산업 혁신 주도</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </div>
+        </div>
+
+        <!-- 가치 3 -->
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-7 hover:shadow-lg hover:border-emerald-300 transition-all duration-300 group">
+          <div class="w-14 h-14 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+            <i data-lucide="users" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">지역 상생과 국민 섬김</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            충북대병원과의 공공의료 협력, 도서관 및 체육시설 개방, 시민 평생학습 프로그램 제공을 통해 국민과 가장 가깝게 호흡하는 열린 대학을 실천합니다.
+          </p>
+          <div class="text-xs text-emerald-600 font-semibold flex items-center gap-1">
+            <span>거점 국립대의 공공성 실현</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 주요 업무 및 역할 (Core Missions) -->
+  <section id="missions" class="py-16 bg-[#F8F7F9]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div>
+          <span class="text-cbnu-red font-bold text-sm tracking-widest uppercase">Core Functions & Duties</span>
+          <h2 class="text-3xl font-extrabold text-slate-900 mt-2">충북대학교가 수행하는 5대 핵심 업무</h2>
+        </div>
+        <p class="text-slate-500 text-sm mt-3 md:mt-0 max-w-md">
+          국민의 세금과 국가 재정으로 운영되는 국립대로서 연구, 교육, 의료, 지역 사회 공헌 등 다각도의 책무를 다하고 있습니다.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 업무 1: 미래 인재 양성 -->
+        <div class="bg-white rounded-2xl p-6 shadow-xs border border-slate-200/80 hover:border-cbnu-red transition">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="p-2.5 rounded-lg bg-rose-50 text-cbnu-red">
+              <i data-lucide="book-open-check" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-lg">1. 미래 융합 인재 양성</h3>
+              <p class="text-xs text-slate-400">교무처, 입학본부, 학생처</p>
+            </div>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            무전공(자율전공) 선발 확대와 학과 간 전공 선택 자율화를 지원합니다. 실무 중심 산학 프로젝트와 첨단 융합 마이크로디그리를 통해 4차 산업혁명 시대 맞춤형 인재를 양성합니다.
+          </p>
+          <ul class="text-xs text-slate-500 space-y-1.5 border-t border-slate-100 pt-3">
+            <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-cbnu-red"></i> 학사 유연화 (전과 제한 완화, 복수전공 활성화)</li>
+            <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-cbnu-red"></i> 반도체공학부 및 첨단학과 신설·확대</li>
+          </ul>
+        </div>
+
+        <!-- 업무 2: 첨단 과학기술 R&D -->
+        <div class="bg-white rounded-2xl p-6 shadow-xs border border-slate-200/80 hover:border-cbnu-red transition">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="p-2.5 rounded-lg bg-blue-50 text-cbnu-blue">
+              <i data-lucide="flask-conical" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-lg">2. 첨단 과학기술 R&D</h3>
+              <p class="text-xs text-slate-400">산학협력단, 연구처</p>
+            </div>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            오송 바이오밸리 및 오창 테크노밸리와 연계하여 신약 개발, 이차전지 기술 고도화, 차세대 시스템반도체 등 국가 전략 핵심 기술을 연구하고 지역 산업체로 이전합니다.
+          </p>
+          <ul class="text-xs text-slate-500 space-y-1.5 border-t border-slate-100 pt-3">
+            <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-cbnu-blue"></i> 연간 수천억 원 규모 산학협력 연구비 운용</li>
+            <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-cbnu-blue"></i> 대학발 실험실 창업 및 특허 기술이전 지원</li>
+          </ul>
+        </div>
+
+        <!-- 업무 3: 공공보건의료 및 생명과학 -->
+        <div class="bg-white rounded-2xl p-6 shadow-xs border border-slate-200/80 hover:border-cbnu-red transition">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="p-2.5 rounded-lg bg-rose-50 text-cbnu-redDark">
+              <i data-lucide="activity" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-lg">3. 지역 거점 공공의료망</h3>
+              <p class="text-xs text-slate-400">의과대, 수의과대, 약학대, 병원</p>
+            </div>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            충북 유일 상급종합병원인 충북대학교병원과 연계하여 중증·응급 환자 진료 및 지역 필수의료 안전망을 수호합니다. 또한 수의대 부속 동물의료센터를 통해 동물 복지 및 방역도 책임집니다.
+          </p>
+          <ul class="text-xs text-slate-500 space-y-1.5 border-t border-slate-100 pt-3">
+            <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-cbnu-redDark"></i> 권역심뇌혈관질환센터 및 암센터 운영</li>
+            <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-cbnu-redDark"></i> 오송 첨단의료복합단지 약학·의과학 연계</li>
+          </ul>
+        </div>
+
+        <!-- 업무 4: 지역사회 기여 및 평생교육 -->
+        <div class="bg-white rounded-2xl p-6 shadow-xs border border-slate-200/80 hover:border-cbnu-red transition">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="p-2.5 rounded-lg bg-emerald-50 text-emerald-600">
+              <i data-lucide="sparkle" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-lg">4. 시민 평생학습 & 개방</h3>
+              <p class="text-xs text-slate-400">평생교육원, 도서관, 박물관</p>
+            </div>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            도민과 청주시민 누구나 인문학, 외국어, 자격증, 디지털 역량을 키울 수 있도록 열린 교육 강좌를 운영하며, 대학 박물관 및 중앙도서관 시설을 국민에게 개방합니다.
+          </p>
+          <ul class="text-xs text-slate-500 space-y-1.5 border-t border-slate-100 pt-3">
+            <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> 지역 주민 특별회원 도서 대출 및 전자도서관 이용</li>
+            <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> 개신문화관 문화예술 공연 및 전시회 수시 개최</li>
+          </ul>
+        </div>
+
+        <!-- 업무 5: 글로벌 협력 및 해외 진출 -->
+        <div class="bg-white rounded-2xl p-6 shadow-xs border border-slate-200/80 hover:border-cbnu-red transition">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="p-2.5 rounded-lg bg-slate-100 text-cbnu-gray">
+              <i data-lucide="globe-2" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-lg">5. 글로벌 교류 네트워크</h3>
+              <p class="text-xs text-slate-400">국제교류본부, 한국어연수원</p>
+            </div>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            전 세계 50여 개국 유수 대학과의 학술 교류 협정 및 교환학생 파견, 우수 외국인 유학생 유치를 통해 다문화 공존의 글로벌 캠퍼스를 구축하고 있습니다.
+          </p>
+          <ul class="text-xs text-slate-500 space-y-1.5 border-t border-slate-100 pt-3">
+            <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-slate-600"></i> 해외 자매대학 파견 교환학생 장학 지원</li>
+            <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-slate-600"></i> K-컬처 및 한국어 학술 교육 프로그램 운영</li>
+          </ul>
+        </div>
+
+        <!-- 업무 6: 학생 취업 및 청년 정주 지원 -->
+        <div class="bg-white rounded-2xl p-6 shadow-xs border border-slate-200/80 hover:border-cbnu-red transition">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="p-2.5 rounded-lg bg-amber-50 text-amber-600">
+              <i data-lucide="trending-up" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-lg">6. 청년 취업·지역 정주</h3>
+              <p class="text-xs text-slate-400">진로취업부, 창업지원단</p>
+            </div>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            충북 지역 유망 공공기관 및 우수 대기업(SK하이닉스, 에코프로, LG에너지솔루션 등)과 연계한 맞춤형 채용 채널을 가동하여 졸업생들의 지역 정주율을 높입니다.
+          </p>
+          <ul class="text-xs text-slate-500 space-y-1.5 border-t border-slate-100 pt-3">
+            <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-amber-500"></i> 지역인재 7급 공무원 및 공기업 채용 캠프</li>
+            <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-amber-500"></i> 대학일자리플러스센터 통한 청년 구직 상담</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 국민이 가장 궁금해하는 최근 주요 이슈 심층 분석 (Issues & Focus) -->
+  <section id="issues" class="py-16 bg-white border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-100 text-cbnu-redDark text-xs font-bold mb-3">
+          <i data-lucide="newspaper" class="w-3.5 h-3.5"></i> 국민 브리핑 인사이트
+        </div>
+        <h2 class="text-3xl font-extrabold text-slate-900">충북대학교 최근 핵심 이슈 & 현안</h2>
+        <p class="text-slate-600 mt-2 leading-relaxed">
+          언론과 지역 사회에서 화제가 되고 있는 중대 이슈들을 국민 여러분의 눈높이에 맞춰 친절하고 객관적으로 설명해 드립니다.
+        </p>
+      </div>
+
+      <!-- 이슈 탭 버튼 영역 -->
+      <div class="flex flex-wrap gap-2 border-b border-slate-200 mb-8" id="issueTabs">
+        <button onclick="switchIssueTab('glocal')" id="tab-btn-glocal" class="tab-btn px-5 py-3 text-sm font-bold border-b-2 border-cbnu-red text-cbnu-red flex items-center gap-2">
+          <i data-lucide="git-merge" class="w-4 h-4"></i> 글로컬대학30 & 통합 추진
+        </button>
+        <button onclick="switchIssueTab('bbcm')" id="tab-btn-bbcm" class="tab-btn px-5 py-3 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-2">
+          <i data-lucide="atom" class="w-4 h-4"></i> BBCM 첨단산업 혁신
+        </button>
+        <button onclick="switchIssueTab('challenge')" id="tab-btn-challenge" class="tab-btn px-5 py-3 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-2">
+          <i data-lucide="alert-triangle" class="w-4 h-4"></i> 현안 과제 및 성과 점검
+        </button>
+        <button onclick="switchIssueTab('medical')" id="tab-btn-medical" class="tab-btn px-5 py-3 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-2">
+          <i data-lucide="stethoscope" class="w-4 h-4"></i> 의대 증원 및 필수의료
+        </button>
+      </div>
+
+      <!-- 이슈 1: 글로컬30 & 대학 통합 -->
+      <div id="issue-content-glocal" class="issue-panel">
+        <div class="bg-gradient-to-br from-slate-50 to-rose-50/30 rounded-2xl p-6 sm:p-8 border border-slate-200">
+          <div class="flex flex-col lg:flex-row gap-8 items-start">
+            <div class="lg:w-2/3 space-y-4">
+              <span class="px-3 py-1 rounded-md bg-rose-100 text-cbnu-redDark text-xs font-bold">2023년 정부 본지정 대형 국책 사업</span>
+              <h3 class="text-2xl font-bold text-slate-900 leading-tight">
+                충북대-한국교통대 통합: “통합을 통한 혁신 극대화로 지역과 함께 세계로”
+              </h3>
+              <p class="text-slate-700 leading-relaxed text-sm sm:text-base">
+                충북대학교는 교육부 주관의 5년간 1,000억 원 이상을 지원받는 <strong>‘글로컬대학30’</strong> 사업에 국립한국교통대학교와의 통합을 전제로 최종 선정되었습니다. 충북 지역 두 국립대의 강점을 모아 대한민국을 대표하는 메가 국립대학으로 거듭나는 계획입니다.
+              </p>
+              
+              <div class="grid sm:grid-cols-2 gap-4 pt-3">
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
+                  <h4 class="font-bold text-slate-800 text-sm flex items-center gap-1.5 mb-1.5 text-cbnu-redDark">
+                    <i data-lucide="milestone" class="w-4 h-4 text-cbnu-red"></i> 4대 권역별 캠퍼스 특성화
+                  </h4>
+                  <p class="text-xs text-slate-600 leading-relaxed">
+                    청주(연구·기초학문), 오송(바이오헬스), 충주(정밀기계·수소), 의왕(철도·물류) 등 각 캠퍼스별 특화된 연구 기능을 분담합니다.
+                  </p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
+                  <h4 class="font-bold text-slate-800 text-sm flex items-center gap-1.5 mb-1.5 text-cbnu-redDark">
+                    <i data-lucide="layers" class="w-4 h-4 text-cbnu-red"></i> 학사 장벽 파괴 (무학과 도입)
+                  </h4>
+                  <p class="text-xs text-slate-600 leading-relaxed">
+                    신입생 무전공 선발 확대, 학과 간 전과 제한 폐지 등 학생들이 원하는 꿈을 마음껏 설계하도록 돕는 유연 학사제를 시행합니다.
+                  </p>
+                </div>
+              </div>
+
+              <div class="p-3.5 bg-rose-100/70 rounded-xl text-xs text-cbnu-redDark flex items-start gap-2">
+                <i data-lucide="info" class="w-4 h-4 text-cbnu-red shrink-0 mt-0.5"></i>
+                <div>
+                  <strong>알기 쉬운 해설:</strong> 충북대와 교통대가 통합되면 학생 정원 규모 확대뿐만 아니라 충북 전체를 아우르는 종합 국립 거점 대학으로서 대외 경쟁력과 정부 지원금이 대폭 증가하게 됩니다.
+                </div>
+              </div>
+            </div>
+
+            <!-- 요약 카드 -->
+            <div class="lg:w-1/3 w-full bg-white p-6 rounded-xl border border-rose-200 shadow-xs">
+              <h4 class="font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100 flex items-center justify-between">
+                <span>통합 추진 주요 현황</span>
+                <span class="text-xs text-rose-700 font-bold bg-rose-50 px-2 py-0.5 rounded">진행 중</span>
+              </h4>
+              <div class="space-y-4 text-xs">
+                <div>
+                  <span class="text-slate-400 block font-medium">통합 대학 출범 목표 시기</span>
+                  <span class="text-slate-800 font-bold text-sm">2027년 3월 공식 출범 목표</span>
+                </div>
+                <div>
+                  <span class="text-slate-400 block font-medium">구성원 찬반 투표 진행</span>
+                  <span class="text-slate-800 font-semibold">교원·직원·학생 투표 합의안 도출 및 교육부 통합신청서 제출</span>
+                </div>
+                <div>
+                  <span class="text-slate-400 block font-medium">핵심 과제</span>
+                  <span class="text-slate-800 font-semibold">신설 대학 교명 결정, 유사·중복 학과 통폐합 및 학생 보호권 보장</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 이슈 2: BBCM 첨단산업 혁신 -->
+      <div id="issue-content-bbcm" class="issue-panel hidden">
+        <div class="bg-gradient-to-br from-slate-50 to-blue-50/40 rounded-2xl p-6 sm:p-8 border border-slate-200">
+          <div class="flex flex-col lg:flex-row gap-8 items-start">
+            <div class="lg:w-2/3 space-y-4">
+              <span class="px-3 py-1 rounded-md bg-blue-100 text-cbnu-blueDark text-xs font-bold">충북 미래 신산업 맞춤형</span>
+              <h3 class="text-2xl font-bold text-slate-900 leading-tight">
+                충북의 전략자산 'BBCM' 특성화 클러스터 구축
+              </h3>
+              <p class="text-slate-700 leading-relaxed text-sm sm:text-base">
+                충북도는 대한민국 이차전지 생산액 1위, 반도체 생산액 2위, 바이오헬스 생산액 2위의 첨단 제조 허브입니다. 충북대학교는 이 4개 산업(BBCM)을 이끌 핵심 엔지니어와 연구자를 해마다 1,000명 이상 길러내어 지역과 함께 성장합니다.
+              </p>
+
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                <div class="p-3 bg-white rounded-lg border border-slate-200 text-center">
+                  <div class="text-rose-700 font-black text-lg">B</div>
+                  <div class="font-bold text-xs text-slate-800">Bio (바이오)</div>
+                  <p class="text-[11px] text-slate-500 mt-1">오송 바이오캠퍼스 신약·임상</p>
+                </div>
+                <div class="p-3 bg-white rounded-lg border border-slate-200 text-center">
+                  <div class="text-cbnu-blue font-black text-lg">B</div>
+                  <div class="font-bold text-xs text-slate-800">Battery (배터리)</div>
+                  <p class="text-[11px] text-slate-500 mt-1">이차전지 혁신융합대학</p>
+                </div>
+                <div class="p-3 bg-white rounded-lg border border-slate-200 text-center">
+                  <div class="text-purple-600 font-black text-lg">C</div>
+                  <div class="font-bold text-xs text-slate-800">Chip (반도체)</div>
+                  <p class="text-[11px] text-slate-500 mt-1">차세대 패키징·설계 인력</p>
+                </div>
+                <div class="p-3 bg-white rounded-lg border border-slate-200 text-center">
+                  <div class="text-amber-600 font-black text-lg">M</div>
+                  <div class="font-bold text-xs text-slate-800">Mobility (모빌리티)</div>
+                  <p class="text-[11px] text-slate-500 mt-1">교통대 K-철도·자율주행 연계</p>
+                </div>
+              </div>
+
+              <div class="p-3.5 bg-blue-100/70 rounded-xl text-xs text-cbnu-blueDark flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-cbnu-blue shrink-0 mt-0.5"></i>
+                <div>
+                  <strong>성과 목표:</strong> 학사 구조를 지역 산업에 최적화하여 충북대 졸업생의 지역 취업 및 정주율을 기존 20%대에서 <strong>40% 이상</strong>으로 대폭 끌어올릴 계획입니다.
+                </div>
+              </div>
+            </div>
+
+            <!-- 사이드 정보 카드 -->
+            <div class="lg:w-1/3 w-full bg-white p-6 rounded-xl border border-slate-200 shadow-xs">
+              <h4 class="font-bold text-slate-900 mb-3 text-sm flex items-center gap-1.5">
+                <i data-lucide="building-2" class="w-4 h-4 text-cbnu-blue"></i> 주요 산학협력 파트너십
+              </h4>
+              <p class="text-xs text-slate-500 mb-4">충북대 학생들은 충북에 위치한 굴지의 글로벌 기업들과 연계된 인턴십과 채용 연계 프로젝트를 누립니다.</p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2.5 py-1 bg-slate-100 rounded text-xs font-semibold text-slate-700">SK하이닉스</span>
+                <span class="px-2.5 py-1 bg-slate-100 rounded text-xs font-semibold text-slate-700">LG에너지솔루션</span>
+                <span class="px-2.5 py-1 bg-slate-100 rounded text-xs font-semibold text-slate-700">에코프로</span>
+                <span class="px-2.5 py-1 bg-slate-100 rounded text-xs font-semibold text-slate-700">셀트리온제약</span>
+                <span class="px-2.5 py-1 bg-slate-100 rounded text-xs font-semibold text-slate-700">현대모비스</span>
+                <span class="px-2.5 py-1 bg-slate-100 rounded text-xs font-semibold text-slate-700">오송 신약개발지원센터</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 이슈 3: 현안 과제 및 성과 점검 -->
+      <div id="issue-content-challenge" class="issue-panel hidden">
+        <div class="bg-gradient-to-br from-slate-50 to-amber-50/40 rounded-2xl p-6 sm:p-8 border border-slate-200">
+          <div class="flex flex-col lg:flex-row gap-8 items-start">
+            <div class="lg:w-2/3 space-y-4">
+              <span class="px-3 py-1 rounded-md bg-amber-100 text-amber-800 text-xs font-bold">투명한 공개 및 실행력 제고</span>
+              <h3 class="text-2xl font-bold text-slate-900 leading-tight">
+                통합 합의와 엄격한 성과평가: 신뢰받는 혁신을 위한 노력
+              </h3>
+              <p class="text-slate-700 leading-relaxed text-sm sm:text-base">
+                대학 간 통합과 혁신 사업은 거대한 변화인 만큼 도전 과제도 따랐습니다. 최근 교육부 연차 평가에서 이행 계획의 엄격한 실행력을 요구받으며 성과 관리 강화에 직면했으며, 학내 캠퍼스 배치 및 교명 선정 등을 둘러싼 구성원 간의 활발한 소통과 조율이 이어지고 있습니다.
+              </p>
+
+              <div class="space-y-3 pt-2">
+                <div class="bg-white p-4 rounded-xl border border-slate-200 text-xs text-slate-600">
+                  <div class="font-bold text-slate-900 text-sm mb-1 flex items-center gap-1.5">
+                    <i data-lucide="shield-alert" class="w-4 h-4 text-amber-500"></i> 구성원 간 민주적 합의 절차
+                  </div>
+                  통합 추진 초기, 총학생회 및 교직원 간 교명 변경 및 캠퍼스 재배치에 대한 다양한 목소리가 표출되었으나, 수차례의 공청회와 조율을 통해 학생들의 학습권을 침해하지 않는 상생안을 지속적으로 다듬어 가고 있습니다.
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 text-xs text-slate-600">
+                  <div class="font-bold text-slate-900 text-sm mb-1 flex items-center gap-1.5">
+                    <i data-lucide="gauge" class="w-4 h-4 text-cbnu-red"></i> 사업 실행력 및 성과 관리 집중
+                  </div>
+                  단순한 통합 선언에 그치지 않고 구체적인 정원 조정, 거버넌스 단일화, 교육 과정 연계 등을 교육부의 기준에 부합하도록 행정 역량을 총결집하고 있습니다.
+                </div>
+              </div>
+            </div>
+
+            <!-- 사이드 현안 요약 -->
+            <div class="lg:w-1/3 w-full bg-white p-6 rounded-xl border border-slate-200 shadow-xs">
+              <h4 class="font-bold text-slate-900 mb-3 text-sm">국민 여러분께 드리는 약속</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                충북대는 위기를 기회로 바꾸는 강한 저력을 지닌 대학입니다. 내부의 건설적인 진통을 도약의 밑거름으로 삼아, 국민의 소중한 세금이 헛되이 쓰이지 않도록 가장 투명하고 내실 있는 국립대 통합 모델을 완성할 것입니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 이슈 4: 의대 증원 및 필수의료 -->
+      <div id="issue-content-medical" class="issue-panel hidden">
+        <div class="bg-gradient-to-br from-slate-50 to-rose-50/40 rounded-2xl p-6 sm:p-8 border border-slate-200">
+          <div class="flex flex-col lg:flex-row gap-8 items-start">
+            <div class="lg:w-2/3 space-y-4">
+              <span class="px-3 py-1 rounded-md bg-rose-100 text-cbnu-redDark text-xs font-bold">지역 의료 공백 해소 과제</span>
+              <h3 class="text-2xl font-bold text-slate-900 leading-tight">
+                충북 의과대학 증원 및 중부권 필수의료 혁신 인프라 확충
+              </h3>
+              <p class="text-slate-700 leading-relaxed text-sm sm:text-base">
+                충북 지역은 인구 대비 상급 의료진 부족률이 높아 의료 인프라 확충이 절실한 지역입니다. 정부의 의대 정원 정책에 발맞추어 의대 정원 확대와 함께 의과대학 시설 첨단화, 충북대병원과의 연계를 통한 필수의료(응급, 소아, 외상) 전문의 양성에 박차를 가하고 있습니다.
+              </p>
+
+              <div class="grid sm:grid-cols-2 gap-4 pt-2">
+                <div class="bg-white p-4 rounded-xl border border-slate-200">
+                  <h4 class="font-bold text-slate-900 text-sm mb-1 text-cbnu-redDark">지역인재 전형 확대</h4>
+                  <p class="text-xs text-slate-600 leading-relaxed">
+                    충북 지역 고교 출신 학생들을 선발하여 졸업 후에도 지역에 남아 의료봉사와 치료에 전념할 수 있는 지역 정주형 의사 인재를 육성합니다.
+                  </p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200">
+                  <h4 class="font-bold text-slate-900 text-sm mb-1 text-cbnu-redDark">의학교육 실습환경 개선</h4>
+                  <p class="text-xs text-slate-600 leading-relaxed">
+                    실습 시설과 교수진을 지속 확충하여 교육의 질을 보장하고 임상의학 연구 경쟁력을 강화하고 있습니다.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 현황 요약 -->
+            <div class="lg:w-1/3 w-full bg-white p-6 rounded-xl border border-slate-200 shadow-xs">
+              <h4 class="font-bold text-slate-900 mb-3 text-sm flex items-center gap-1.5">
+                <i data-lucide="heart" class="w-4 h-4 text-cbnu-red"></i> 충북의 생명선 수호
+              </h4>
+              <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                도민들이 치료를 위해 서울 등 타 지역으로 원정 진료를 떠나지 않아도 충북대병원에서 최고 수준의 진료를 안심하고 받을 수 있도록 공공의료 체계를 든든히 다집니다.
+              </p>
+              <div class="p-3 bg-rose-50 rounded-lg text-cbnu-redDark text-xs font-semibold">
+                지역 완결형 필수·공공의료 시스템 완성
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. 캠퍼스 소개 및 특화 안내 (Campuses) -->
+  <section id="campuses" class="py-16 bg-[#F8F7F9]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-cbnu-red font-bold text-sm tracking-widest uppercase">Multi-Campus Map</span>
+        <h2 class="text-3xl font-extrabold text-slate-900 mt-2 mb-4">목적별로 특화된 충북대학교 3대 캠퍼스</h2>
+        <p class="text-slate-600">
+          청주 중심부의 본교 개신캠퍼스를 주축으로, 오송 생명과학단지 및 오창 과학산업단지의 유기적 캠퍼스 네트워크를 자랑합니다.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- 1. 개신캠퍼스 -->
+        <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-xs hover:shadow-md transition">
+          <div class="h-48 bg-gradient-to-tr from-cbnu-redDark to-cbnu-red relative p-6 flex flex-col justify-end text-white">
+            <span class="absolute top-4 left-4 px-2.5 py-1 bg-white/20 backdrop-blur-md rounded text-xs font-semibold">Main Campus</span>
+            <div class="text-2xl font-black">개신캠퍼스 (본교)</div>
+            <div class="text-xs text-rose-100 mt-1">충청북도 청주시 서원구 충대로 1</div>
+          </div>
+          <div class="p-6">
+            <div class="inline-block px-2.5 py-1 bg-rose-50 text-cbnu-red text-xs font-bold rounded mb-3">
+              학문·연구·행정의 심장부
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+              대학본부(N10), 중앙도서관(N12), 개신문화관(E2), 인문·사회·공과·자연과학·사범·전자정보·경영·생활대 등 대다수의 단과대학 및 충북대병원이 자리한 핵심 터전입니다.
+            </p>
+            <div class="border-t border-slate-100 pt-3 text-xs text-slate-500 space-y-1">
+              <div class="flex items-center gap-1.5"><i data-lucide="building" class="w-3.5 h-3.5 text-slate-400"></i> 학연산공동기술연구원, CBNU 스포츠센터</div>
+              <div class="flex items-center gap-1.5"><i data-lucide="bus" class="w-3.5 h-3.5 text-slate-400"></i> 청주시내버스 주요 노선 경유 및 개신문화관 정류장</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 오송캠퍼스 -->
+        <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-xs hover:shadow-md transition">
+          <div class="h-48 bg-gradient-to-tr from-teal-900 to-emerald-700 relative p-6 flex flex-col justify-end text-white">
+            <span class="absolute top-4 left-4 px-2.5 py-1 bg-white/20 backdrop-blur-md rounded text-xs font-semibold">Bio Campus</span>
+            <div class="text-2xl font-black">오송캠퍼스</div>
+            <div class="text-xs text-emerald-200 mt-1">충북 청주시 흥덕구 오송생명1로 194-21</div>
+          </div>
+          <div class="p-6">
+            <div class="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold rounded mb-3">
+              바이오·의약학 산학융합 거점
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+              국내 최대 바이오밸리 내 위치하며, 약학대학(약학관 1·2관) 전 학년 및 임상연구지원센터, 융합R&D연구센터가 이전하여 국책기관(식약처 등)과 최단거리 협력을 펼칩니다.
+            </p>
+            <div class="border-t border-slate-100 pt-3 text-xs text-slate-500 space-y-1">
+              <div class="flex items-center gap-1.5"><i data-lucide="dna" class="w-3.5 h-3.5 text-slate-400"></i> 신약개발 및 바이오헬스 특화 실험실</div>
+              <div class="flex items-center gap-1.5"><i data-lucide="repeat" class="w-3.5 h-3.5 text-slate-400"></i> 본교 개신캠퍼스 ↔ 오송 간 무료 셔틀버스 운행</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 오창캠퍼스 -->
+        <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-xs hover:shadow-md transition">
+          <div class="h-48 bg-gradient-to-tr from-cbnu-blueDark to-cbnu-blue relative p-6 flex flex-col justify-end text-white">
+            <span class="absolute top-4 left-4 px-2.5 py-1 bg-white/20 backdrop-blur-md rounded text-xs font-semibold">Industry Campus</span>
+            <div class="text-2xl font-black">오창캠퍼스</div>
+            <div class="text-xs text-blue-200 mt-1">충북 청주시 청원구 오창읍 양청4길 45</div>
+          </div>
+          <div class="p-6">
+            <div class="inline-block px-2.5 py-1 bg-blue-50 text-cbnu-blue text-xs font-bold rounded mb-3">
+              첨단 산업 실증 & 미래기술 연구
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+              오창 과학산업단지 및 차세대 다목적 방사광가속기 배후 단지와 연접하여, 기업 R&D 연구소 및 자율주행 테스트베드(C-Track) 실증 연구를 적극 수행합니다.
+            </p>
+            <div class="border-t border-slate-100 pt-3 text-xs text-slate-500 space-y-1">
+              <div class="flex items-center gap-1.5"><i data-lucide="car" class="w-3.5 h-3.5 text-slate-400"></i> 자율주행차 성능시험장(C-Track) 구축</div>
+              <div class="flex items-center gap-1.5"><i data-lucide="zap" class="w-3.5 h-3.5 text-slate-400"></i> 이차전지·디스플레이 소재부품장비 실증</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 국민을 위한 열린 캠퍼스 편의 서비스 (Citizen Services) -->
+  <section id="citizen-services" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-12">
+        <span class="text-cbnu-red font-bold text-sm tracking-widest uppercase">Open to Public</span>
+        <h2 class="text-3xl font-extrabold text-slate-900 mt-1">도민과 국민 누구나 누리는 열린 혜택</h2>
+        <p class="text-slate-600 mt-2">
+          국립대학교는 학생들만의 공간이 아닙니다. 국민 여러분의 삶을 더 풍요롭게 만드는 충북대학교의 개방 시설과 혜택을 안내합니다.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- 서비스 1: 중앙도서관 일반회원 -->
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-cbnu-red hover:shadow-md transition">
+          <div class="w-12 h-12 rounded-xl bg-rose-100 text-cbnu-red flex items-center justify-center mb-4">
+            <i data-lucide="library" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-bold text-slate-950 mb-2">중앙도서관 특별회원</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-3">
+            만 19세 이상 지역 주민(도민)은 누구나 특별회원으로 등록하여 방대한 학술 장서 대출 및 열람실을 이용할 수 있습니다.
+          </p>
+          <span class="text-xs font-semibold text-cbnu-red inline-flex items-center gap-1">
+            이용방법: 신분증 지참 도서관 방문
+          </span>
+        </div>
+
+        <!-- 서비스 2: 평생교육원 열린 강좌 -->
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-400 hover:shadow-md transition">
+          <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4">
+            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-bold text-slate-950 mb-2">평생교육원 시민 강좌</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-3">
+            예술, 인문학, 외국어, 자격취득 과정 등 매 학기 수준 높은 평생학습 교양 프로그램을 시민들에게 합리적인 수강료로 제공합니다.
+          </p>
+          <span class="text-xs font-semibold text-emerald-600 inline-flex items-center gap-1">
+            접수: 평생교육원 홈페이지 수시 모집
+          </span>
+        </div>
+
+        <!-- 서비스 3: 박물관 무료 관람 -->
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:shadow-md transition">
+          <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center mb-4">
+            <i data-lucide="landmark" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-bold text-slate-950 mb-2">충북대학교 박물관</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-3">
+            중원 문화권의 찬란한 고고학적 유물과 역사 자료를 소장·전시 중인 박물관은 모든 시민과 어린이들에게 무료로 개방됩니다.
+          </p>
+          <span class="text-xs font-semibold text-amber-700 inline-flex items-center gap-1">
+            관람료 무료 / 개신문화관 부근 위치
+          </span>
+        </div>
+
+        <!-- 서비스 4: CBNU 스포츠센터 -->
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-cbnu-blue hover:shadow-md transition">
+          <div class="w-12 h-12 rounded-xl bg-blue-100 text-cbnu-blue flex items-center justify-center mb-4">
+            <i data-lucide="dumbbell" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-bold text-slate-950 mb-2">스포츠센터 & 운동장</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-3">
+            수영장, 헬스장, 실내골프연습장, 스쿼시장 등 첨단 스포츠 시설을 지역 주민에게 우대 혜택과 함께 개방하여 건강 증진을 돕습니다.
+          </p>
+          <span class="text-xs font-semibold text-cbnu-blue inline-flex items-center gap-1">
+            체육시설: 일반인 회원 강습 등록 가능
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 국민 자주 묻는 질문 (FAQ Accordion) -->
+  <section id="faq" class="py-16 bg-[#F8F7F9]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <span class="text-cbnu-red font-bold text-sm tracking-widest uppercase">Frequently Asked Questions</span>
+        <h2 class="text-3xl font-extrabold text-slate-900 mt-1">국민과 수험생이 가장 많이 묻는 질문</h2>
+        <p class="text-slate-500 text-sm mt-2">입학, 도서관 이용, 교통대와의 통합 등 궁금증을 빠르게 해결해 드립니다.</p>
+      </div>
+
+      <div class="space-y-4">
+        <!-- FAQ 1 -->
+        <div class="bg-white rounded-xl border border-slate-200 overflow-hidden transition shadow-xs">
+          <button onclick="toggleFaq('faq-1')" class="w-full px-6 py-4.5 text-left font-bold text-slate-900 flex justify-between items-center hover:bg-slate-50">
+            <span class="flex items-center gap-2">
+              <span class="text-cbnu-red font-black">Q1.</span> 교통대와 통합되면 기존 재학생과 졸업생의 학적과 졸업장은 어떻게 되나요?
+            </span>
+            <i id="faq-icon-faq-1" data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform"></i>
+          </button>
+          <div id="faq-1" class="hidden px-6 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+            통합 이전 입학한 학생들의 학습권과 졸업 자격은 철저히 보호됩니다. 재학생들은 입학 당시의 학과 명칭과 졸업 요건을 보장받을 수 있는 선택권을 가지며, 유사 학과 통폐합 과정에서도 학생들의 의견을 적극 반영하여 불이익이 발생하지 않도록 경과 조치가 마련됩니다.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="bg-white rounded-xl border border-slate-200 overflow-hidden transition shadow-xs">
+          <button onclick="toggleFaq('faq-2')" class="w-full px-6 py-4.5 text-left font-bold text-slate-900 flex justify-between items-center hover:bg-slate-50">
+            <span class="flex items-center gap-2">
+              <span class="text-cbnu-red font-black">Q2.</span> 일반 시민도 캠퍼스 산책이나 주차장 이용이 가능한가요?
+            </span>
+            <i id="faq-icon-faq-2" data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform"></i>
+          </button>
+          <div id="faq-2" class="hidden px-6 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+            네, 충북대학교 개신캠퍼스는 솔못과 조각공원, 개신문화관 등 아름다운 녹지 공간을 자랑하며 언제든 시민들의 쾌적한 휴식과 산책을 환영합니다. 차량 진입 시에는 무인 주차 정산 시스템이 운영되고 있으며, 기본 회차 시간(10~30분) 및 방문 시설별 할인 혜택이 적용됩니다.
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="bg-white rounded-xl border border-slate-200 overflow-hidden transition shadow-xs">
+          <button onclick="toggleFaq('faq-3')" class="w-full px-6 py-4.5 text-left font-bold text-slate-900 flex justify-between items-center hover:bg-slate-50">
+            <span class="flex items-center gap-2">
+              <span class="text-cbnu-red font-black">Q3.</span> 수험생인데 충북대학교 무전공(자율전공) 입학은 어떻게 운영되나요?
+            </span>
+            <i id="faq-icon-faq-3" data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform"></i>
+          </button>
+          <div id="faq-3" class="hidden px-6 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+            충북대는 학생들의 다양한 진로 탐색을 돕기 위해 계열별 무전공 또는 자유전공학부 선발을 대폭 확대하고 있습니다. 입학 후 1년간 다양한 기초 교양 및 전공 체험을 거친 뒤, 성적이나 인원 제한에 구애받지 않고 원하는 학과(의·약학·사범대 등 국가자격 관련 특수학과 제외)를 자율적으로 선택할 수 있습니다.
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="bg-white rounded-xl border border-slate-200 overflow-hidden transition shadow-xs">
+          <button onclick="toggleFaq('faq-4')" class="w-full px-6 py-4.5 text-left font-bold text-slate-900 flex justify-between items-center hover:bg-slate-50">
+            <span class="flex items-center gap-2">
+              <span class="text-cbnu-red font-black">Q4.</span> 충북대학교 병원 진료 예약은 어떻게 하나요?
+            </span>
+            <i id="faq-icon-faq-4" data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform"></i>
+          </button>
+          <div id="faq-4" class="hidden px-6 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+            충북대학교병원은 상급종합병원(3차 의료기관)이므로 원칙적으로 병·의원(1·2차 의료기관)의 <strong>요양급여의뢰서(진료의뢰서)</strong>가 필요합니다. 의뢰서를 지참하시고 병원 대표전화(043-269-6114) 또는 충북대학교병원 홈페이지를 통해 간편하게 진료과별 예약이 가능합니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. 주요 부서 안내 및 국민 소통 전화번호 검색 (Contact Directory) -->
+  <section id="contact" class="py-16 bg-white border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+        <div>
+          <span class="text-cbnu-red font-bold text-sm tracking-widest uppercase">Quick Contact Directory</span>
+          <h2 class="text-3xl font-extrabold text-slate-900 mt-1">부서별 빠른 전화번호 및 안내</h2>
+        </div>
+        <!-- 실시간 검색창 -->
+        <div class="mt-4 md:mt-0 relative w-full md:w-80">
+          <input type="text" id="deptSearch" onkeyup="filterDirectory()" placeholder="부서명 또는 업무 검색 (예: 입학, 장학, 증명서)..." class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-cbnu-red focus:border-transparent">
+          <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5"></i>
+        </div>
+      </div>
+
+      <!-- 전화번호 카드 그리드 -->
+      <div id="directoryGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- 부서 1 -->
+        <div class="dept-card p-4 rounded-xl border border-slate-200 hover:shadow-sm bg-slate-50 transition" data-dept="입학본부 신입생 수시 정시 편입 전형">
+          <div class="flex items-center justify-between mb-1">
+            <span class="font-bold text-slate-900 text-sm">입학본부 (입학과)</span>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-rose-100 text-cbnu-redDark font-semibold">대학본부 N10</span>
+          </div>
+          <p class="text-xs text-slate-500 mb-2">학부 신입학·편입학 전형 및 입학상담</p>
+          <a href="tel:043-261-2882" class="text-sm font-bold text-cbnu-red hover:underline flex items-center gap-1.5">
+            <i data-lucide="phone" class="w-3.5 h-3.5"></i> 043-261-2882
+          </a>
+        </div>
+
+        <!-- 부서 2 -->
+        <div class="dept-card p-4 rounded-xl border border-slate-200 hover:shadow-sm bg-slate-50 transition" data-dept="교무처 학사지원과 휴학 복학 전과 졸업 성적 증명서 발급">
+          <div class="flex items-center justify-between mb-1">
+            <span class="font-bold text-slate-900 text-sm">학사지원과</span>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-rose-100 text-cbnu-redDark font-semibold">대학본부 N10</span>
+          </div>
+          <p class="text-xs text-slate-500 mb-2">수강신청, 학적변동, 성적 및 증명서</p>
+          <a href="tel:043-261-2016" class="text-sm font-bold text-cbnu-red hover:underline flex items-center gap-1.5">
+            <i data-lucide="phone" class="w-3.5 h-3.5"></i> 043-261-2016
+          </a>
+        </div>
+
+        <!-- 부서 3 -->
+        <div class="dept-card p-4 rounded-xl border border-slate-200 hover:shadow-sm bg-slate-50 transition" data-dept="학생과 장학금 복지 학자금대출 학생회">
+          <div class="flex items-center justify-between mb-1">
+            <span class="font-bold text-slate-900 text-sm">학생과 (장학복지)</span>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-rose-100 text-cbnu-redDark font-semibold">대학본부 N10</span>
+          </div>
+          <p class="text-xs text-slate-500 mb-2">국가장학금, 교내외 장학금 및 학생복지</p>
+          <a href="tel:043-261-2027" class="text-sm font-bold text-cbnu-red hover:underline flex items-center gap-1.5">
+            <i data-lucide="phone" class="w-3.5 h-3.5"></i> 043-261-2027
+          </a>
+        </div>
+
+        <!-- 부서 4 -->
+        <div class="dept-card p-4 rounded-xl border border-slate-200 hover:shadow-sm bg-slate-50 transition" data-dept="중앙도서관 열람실 대출 시민회원 논문">
+          <div class="flex items-center justify-between mb-1">
+            <span class="font-bold text-slate-900 text-sm">중앙도서관</span>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-rose-100 text-cbnu-redDark font-semibold">도서관 N12</span>
+          </div>
+          <p class="text-xs text-slate-500 mb-2">장서 대출·반납, 도민회원 가입 안내</p>
+          <a href="tel:043-261-2884" class="text-sm font-bold text-cbnu-red hover:underline flex items-center gap-1.5">
+            <i data-lucide="phone" class="w-3.5 h-3.5"></i> 043-261-2884
+          </a>
+        </div>
+
+        <!-- 부서 5 -->
+        <div class="dept-card p-4 rounded-xl border border-slate-200 hover:shadow-sm bg-slate-50 transition" data-dept="산학협력단 연구비 과제 기업지원 기술이전 특허">
+          <div class="flex items-center justify-between mb-1">
+            <span class="font-bold text-slate-900 text-sm">산학협력단</span>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-blue-100 text-cbnu-blueDark font-semibold">학연산연구원 E9</span>
+          </div>
+          <p class="text-xs text-slate-500 mb-2">기업 산학협력, 특허기술 상담 및 R&D과제</p>
+          <a href="tel:043-261-3482" class="text-sm font-bold text-cbnu-blue hover:underline flex items-center gap-1.5">
+            <i data-lucide="phone" class="w-3.5 h-3.5"></i> 043-261-3482
+          </a>
+        </div>
+
+        <!-- 부서 6 -->
+        <div class="dept-card p-4 rounded-xl border border-slate-200 hover:shadow-sm bg-slate-50 transition" data-dept="진로취업부 취업상담 인턴 청년 채용 추천">
+          <div class="flex items-center justify-between mb-1">
+            <span class="font-bold text-slate-900 text-sm">진로취업부</span>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-rose-100 text-cbnu-redDark font-semibold">인재양성원 N6</span>
+          </div>
+          <p class="text-xs text-slate-500 mb-2">청년 취업 컨설팅 및 기업 추천채용</p>
+          <a href="tel:043-261-3580" class="text-sm font-bold text-cbnu-red hover:underline flex items-center gap-1.5">
+            <i data-lucide="phone" class="w-3.5 h-3.5"></i> 043-261-3580
+          </a>
+        </div>
+
+        <!-- 부서 7 -->
+        <div class="dept-card p-4 rounded-xl border border-slate-200 hover:shadow-sm bg-slate-50 transition" data-dept="평생교육원 시민강좌 자격증 교양프로그램">
+          <div class="flex items-center justify-between mb-1">
+            <span class="font-bold text-slate-900 text-sm">평생교육원</span>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-rose-100 text-cbnu-redDark font-semibold">평생교육원 E11</span>
+          </div>
+          <p class="text-xs text-slate-500 mb-2">도민 및 시민 교양강좌 수강신청 접수</p>
+          <a href="tel:043-261-2075" class="text-sm font-bold text-cbnu-red hover:underline flex items-center gap-1.5">
+            <i data-lucide="phone" class="w-3.5 h-3.5"></i> 043-261-2075
+          </a>
+        </div>
+
+        <!-- 부서 8 -->
+        <div class="dept-card p-4 rounded-xl border border-slate-200 hover:shadow-sm bg-slate-50 transition" data-dept="충북대학교병원 진료예약 응급실 외래 예약">
+          <div class="flex items-center justify-between mb-1">
+            <span class="font-bold text-slate-900 text-sm">충북대학교병원</span>
+            <span class="text-[11px] px-2 py-0.5 rounded bg-rose-100 text-cbnu-redDark font-semibold">병원 원내</span>
+          </div>
+          <p class="text-xs text-slate-500 mb-2">외래 진료예약 및 지역응급의료센터</p>
+          <a href="tel:043-269-6114" class="text-sm font-bold text-cbnu-redDark hover:underline flex items-center gap-1.5">
+            <i data-lucide="phone" class="w-3.5 h-3.5"></i> 043-269-6114
+          </a>
+        </div>
+      </div>
+      
+      <div id="noResults" class="hidden text-center py-10 text-slate-500">
+        <i data-lucide="search-x" class="w-8 h-8 mx-auto text-slate-400 mb-2"></i>
+        검색된 부서 또는 업무 정보가 없습니다. 대표번호(043-261-2114)로 문의하시면 교환원이 안내해 드립니다.
+      </div>
+    </div>
+  </section>
+
+  <!-- 푸터 (Footer) - 충북대학교 슬레이트 다크 테마 -->
+  <footer class="bg-cbnu-slateDark text-slate-400 text-xs py-14 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-slate-800">
+        <!-- 푸터 로고 및 소개 -->
+        <div class="md:col-span-2 space-y-3">
+          <div class="flex items-center gap-2 text-white font-bold text-lg">
+            <i data-lucide="graduation-cap" class="w-6 h-6 text-rose-400"></i>
+            <span>충북대학교 (Chungbuk National University)</span>
+          </div>
+          <p class="text-slate-400 leading-relaxed max-w-md">
+            충청북도 청주시 서원구 충대로 1 (우편번호: 28644)<br>
+            대표전화: 043-261-2114 | 입학문의: 043-261-2882 | 팩스: 043-267-3154
+          </p>
+          <div class="flex items-center gap-3 pt-2">
+            <a href="https://www.chungbuk.ac.kr" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded bg-slate-800 text-slate-200 hover:bg-slate-700 font-medium inline-flex items-center gap-1">
+              <span>공식 홈페이지</span> <i data-lucide="external-link" class="w-3 h-3"></i>
+            </a>
+            <a href="https://hospital.chungbuk.ac.kr" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded bg-slate-800 text-slate-200 hover:bg-slate-700 font-medium inline-flex items-center gap-1">
+              <span>충북대학교병원</span> <i data-lucide="external-link" class="w-3 h-3"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 바로가기 링크 1 -->
+        <div>
+          <h4 class="text-white font-bold text-sm mb-3">포털 주요 메뉴</h4>
+          <ul class="space-y-2">
+            <li><a href="#intro" class="hover:text-white transition">대학 이념 및 소개</a></li>
+            <li><a href="#missions" class="hover:text-white transition">대학의 5대 주요업무</a></li>
+            <li><a href="#issues" class="hover:text-white transition">글로컬30 & 대학통합 브리핑</a></li>
+            <li><a href="#campuses" class="hover:text-white transition">개신·오송·오창 캠퍼스</a></li>
+          </ul>
+        </div>
+
+        <!-- 바로가기 링크 2 -->
+        <div>
+          <h4 class="text-white font-bold text-sm mb-3">국민 알림 & 참여</h4>
+          <ul class="space-y-2">
+            <li><a href="#citizen-services" class="hover:text-white transition">시민 개방 편의시설</a></li>
+            <li><a href="#faq" class="hover:text-white transition">자주 묻는 질문(FAQ)</a></li>
+            <li><a href="#contact" class="hover:text-white transition">부서 전화번호 안내</a></li>
+            <li><span class="text-slate-500">정보공개청구 (open.go.kr)</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-slate-500 gap-4">
+        <div>
+          © CHUNGBUK NATIONAL UNIVERSITY. ALL RIGHTS RESERVED. (국민 열린정보 서비스 안내 포털)
+        </div>
+        <div class="flex gap-4">
+          <span class="hover:text-slate-400">개인정보처리방침</span>
+          <span>·</span>
+          <span class="hover:text-slate-400">이메일무단수집거부</span>
+          <span>·</span>
+          <span class="hover:text-slate-400">웹접근성정책</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 페이지 기능 스크립트 -->
+  <script>
+    // Lucide Icons 렌더링
+    lucide.createIcons();
+
+    // 모바일 메뉴 토글
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+      // 링크 클릭 시 닫기
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+      });
+    }
+
+    // 이슈 탭 전환 함수
+    function switchIssueTab(tabId) {
+      // 모든 패널 숨기기
+      document.querySelectorAll('.issue-panel').forEach(panel => {
+        panel.classList.add('hidden');
+      });
+      // 대상 패널 보이기
+      const targetPanel = document.getElementById(`issue-content-${tabId}`);
+      if (targetPanel) {
+        targetPanel.classList.remove('hidden');
+      }
+
+      // 탭 버튼 스타일 초기화
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('border-cbnu-red', 'text-cbnu-red', 'font-bold');
+        btn.classList.add('border-transparent', 'text-slate-500', 'font-semibold');
+      });
+
+      // 활성 탭 버튼 스타일 적용
+      const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+      if (activeBtn) {
+        activeBtn.classList.remove('border-transparent', 'text-slate-500', 'font-semibold');
+        activeBtn.classList.add('border-cbnu-red', 'text-cbnu-red', 'font-bold');
+      }
+    }
+
+    // FAQ 아코디언 토글
+    function toggleFaq(id) {
+      const content = document.getElementById(id);
+      const icon = document.getElementById(`faq-icon-${id}`);
+      if (content) {
+        const isHidden = content.classList.contains('hidden');
+        content.classList.toggle('hidden');
+        if (icon) {
+          icon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+      }
+    }
+
+    // 부서 전화번호부 실시간 검색
+    function filterDirectory() {
+      const input = document.getElementById('deptSearch').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.dept-card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const text = (card.getAttribute('data-dept') + ' ' + card.innerText).toLowerCase();
+        if (text.includes(input)) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      const noResults = document.getElementById('noResults');
+      if (noResults) {
+        if (visibleCount === 0) {
+          noResults.classList.remove('hidden');
+        } else {
+          noResults.classList.add('hidden');
+        }
+      }
+    }
+
+    // 스크롤 유틸리티
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  </script>
+</body>
+</html>
